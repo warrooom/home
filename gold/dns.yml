@@ -1,0 +1,13 @@
+---
+- name: Builds the DNS Server
+  hosts: dns
+  remote_user: sean
+  become: yes
+  become_method: sudo
+  gather_facts: false
+  roles:
+    - role: dns
+  tasks:
+  - name: Print a message about DNS
+    ansible.builtin.debug:
+      msg: "Finished the DNS"

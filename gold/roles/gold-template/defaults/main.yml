@@ -1,0 +1,7 @@
+---
+# defaults file for roles/gold-template
+lab_int: ens18
+lab_gateway: 192.168.23.5
+lab_dns: 192.168.23.5
+lab_ip_address: 192.168.23.30
+lab_netmask: 255.255.255.0

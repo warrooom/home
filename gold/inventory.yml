@@ -1,0 +1,26 @@
+all:
+  children:
+    kube:
+      hosts:
+        node1:
+          ansible_host: 192.168.23.30
+        node2:
+          ansible_host: 192.168.23.31
+        node3:
+          ansible_host: 192.168.23.32
+        node4:
+          ansible_host: 192.168.23.33
+        node5:
+          ansible_host: 192.168.23.34
+    master:
+      hosts:
+        master1:
+          ansible_host: 192.168.23.25
+    imaging:
+      hosts:
+        gold1:
+          ansible_host: 192.168.23.15
+    dns:
+      hosts:
+        dns1:
+          ansible_host: 192.168.23.16

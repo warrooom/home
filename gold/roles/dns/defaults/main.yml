@@ -1,0 +1,24 @@
+---
+# defaults file for dns
+named_listen_on:
+  - 127.0.0.1
+  - 192.168.23.16
+
+named_forwarders:
+  - 192.168.23.5
+
+named_allow_query:
+  - localhost
+  - 192.168.23.0/24
+
+named_recursion: "yes"
+
+named_zones:
+  - name: lab.internal
+    type: master
+    file: lab.internal.zone
+
+blocked_dns:
+  - blocked.local
+  - extra.local
+  - banafits.local

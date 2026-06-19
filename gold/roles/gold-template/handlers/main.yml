@@ -1,0 +1,11 @@
+---
+# handlers file for roles/gold-template
+- name: Restart ssh Service
+  ansible.builtin.service:
+    name: ssh
+    state: restarted
+
+- name: Restart Network Service
+  ansible.builtin.service:
+    name: networking
+    state: restarted

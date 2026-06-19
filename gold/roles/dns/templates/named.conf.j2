@@ -1,0 +1,20 @@
+// This named file is managed by ansible. Please do not modify outside of ansible.
+// 20260411.0
+options {
+    listen-on port 53 { {{ named_listen_on | join('; ') }}; };
+    directory "/var/cache/bind";
+    forwarders { {{ named_forwarders | join('; ') }}; };
+    allow-query { {{ named_allow_query | join('; ') }}; };
+    recursion {{ named_recursion }};
+};
+
+{% for zone in named_zones %}
+zone "{{ zone.name }}" IN {
+    type {{ zone.type }};
+    file "{{ zone.file }}";
+};
+{% endfor %}
+
+{% for item in blocked_dns %}
+zone "{{ item }}" {type master; file "/etc/bind/db.blocked.local";};
+{% endfor %}

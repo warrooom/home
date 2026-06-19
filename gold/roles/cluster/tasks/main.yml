@@ -1,0 +1,13 @@
+---
+- name: Update package cache
+  ansible.builtin.apt:
+    update_cache: yes
+
+- name: Upgrade all packages
+  ansible.builtin.apt:
+    upgrade: dist
+
+- name: Check if reboot required
+  stat:
+    path: /var/run/reboot-required
+  notify: Reboot if required
