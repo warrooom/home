@@ -1,0 +1,16 @@
+# .config/systemd/user/pihole.service
+# Starts rootless podman containers for pihole on debian 12 (Quadlet not native) leveraging systemd --user
+# Experiment to have an ancillary pihole server running on a "cheap" Organge Pi Zero3
+[Unit]
+Description=pihole
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/usr/bin/podman-compose -f /home/sean/pihole/docker-compose.yml up -d
+ExecStop=/usr/bin/podman-compose -f /home/sean/pihole/docker-compose.yml down
+
+[Install]
+WantedBy=default.target
