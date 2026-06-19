@@ -1,0 +1,15 @@
+---
+- name: Provision gold server into node
+  hosts: gold1
+  remote_user: sean
+  become: yes
+  become_method: sudo
+  tasks:
+
+  - name: Configure gold server
+    include_role:
+      name: gold-template
+
+  - name: Print a message
+    ansible.builtin.debug:
+      msg: "this task runs after the example role"
